@@ -1,0 +1,19 @@
+if ( gcc -o rc1 rc1.c )
+then
+        echo
+        echo " **** rc1 Make Success"
+        echo
+fi
+if ( gcc -o rc2 rc2.c )
+then
+        echo
+        echo " **** rc2 Make Success"
+        echo
+fi
+if ( gcc -o rc3 rc3.c )
+then
+        echo
+        echo " **** rc3 Make Success"
+        echo
+fi
+

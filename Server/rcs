@@ -1,0 +1,74 @@
+#!/bin/bash
+checkin()
+{
+        for file in $(ls *.h)
+        do
+                ci $file
+        done
+
+        for file in $(ls *.c)
+        do
+                ci $file
+        done
+}
+
+checkout()
+{
+        for file in $(ls *.h,v)
+        do
+                co $file
+        done
+
+        for file in $(ls *.c,v)
+        do
+                co $file
+        done
+}
+edit()
+{
+        for file in $(ls *.h,v)
+        do
+                co -l $file
+        done
+
+        for file in $(ls *.c,v)
+        do
+                co -l $file
+        done
+}
+compile()
+{
+        if ( make )
+        then
+                echo " . . $ Make success  $ . . "
+                echo " "
+                read -n1 -p " Do you want to edit : y/n -"
+                if [ $REPLY == 'y' ]
+                then
+                        edit
+                else
+                        echo " "
+                        read -n1 -p " Do you want to Run : y/n  -"
+                        if [ $REPLY == 'y' ]
+                        then
+			#	stty -icanon min 1 time 0
+                                ./server_t 9090
+			#	stty sane
+                        fi
+                        echo " "
+                fi
+
+        else
+                echo " !!!  Make Failed !!! "
+                read -n1 -p " Do you want to edit : y/n -"
+                if [ $REPLY == 'y' ]
+                then
+                        edit
+                fi
+                echo " "
+        fi
+
+}
+checkin
+compile
+

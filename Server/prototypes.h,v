@@ -1,0 +1,32 @@
+head	1.1;
+access;
+symbols;
+locks
+	root:1.1; strict;
+comment	@ * @;
+
+
+1.1
+date	2017.07.07.20.36.47;	author root;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@void *accept_clients(void *arg);
+void *requestProcess(void *arg);
+int addition(int x, int y);
+int multiply(int x, int y);
+int subtract(int x, int y);
+
+#define LISTEN_BACKLOG 50
+
+@
